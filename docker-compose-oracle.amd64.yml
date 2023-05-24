@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: sbx-ora
+    restart: always
+    environment:
+      ORACLE_PWD: ${ROOT_PASSWORD}
+      ORACLE_CHARACTERSET: AL32UTF8
+    ports:
+      - 1521:1521

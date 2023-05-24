@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  db:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    cap_add: ['SYS_PTRACE']
+    container_name: sbx-tsql-edge
+    restart: always
+    environment:
+      MSSQL_SA_PASSWORD: ${ROOT_PASSWORD}
+      ACCEPT_EULA: 1
+    ports:
+      - 1433:1433

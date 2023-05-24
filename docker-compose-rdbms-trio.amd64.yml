@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: sbx-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MYSQL_DATABASE: experiments
+      MYSQL_USER: sbx-user
+      MYSQL_PASSWORD: ${USR_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+  
+  tsql-db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sbx-tsql
+    restart: always
+    environment:
+      SA_PASSWORD: ${ROOT_PASSWORD}
+      ACCEPT_EULA: Y
+    ports:
+      - 1433:1433
+    
+  ora-db:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: sbx-ora
+    restart: always
+    environment:
+      ORACLE_PWD: ${ROOT_PASSWORD}
+      ORACLE_CHARACTERSET: AL32UTF8
+    ports:
+      - 1521:1521
