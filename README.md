@@ -39,8 +39,10 @@ Note: Some of the file names has CPU architecture in the file extension which me
 
 To run all 3 RDBMS at the same time, use the following command
 
-docker-compose -f docker-compose-rdbms-trio.amd64.yml up -d
-
+``` shell
+	# amd64 architecture
+	docker-compose -f docker-compose-rdbms-trio.amd64.yml up -d
+```
 
 
 ## Docker compose command reference
